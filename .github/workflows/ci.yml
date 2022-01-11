@@ -19,4 +19,6 @@ jobs:
       shell: bash
       run: |
         bazelisk test //...
+        bazelisk run //:bzlformat_missing_pkgs_test
+
 
