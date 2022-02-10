@@ -12,10 +12,10 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "cgrindel_gha_create_release_test",
-    sha256 = "ef530e8347bd0ff8fea2d95988d2a133086b9ae68ffbce6ee1d847a751989d9a",
-    strip_prefix = "gha_create_release_test-999.0.0-1688769487-1",
+    sha256 = "01df9729ffea20cddcdca89edb596f3c06e8790bdd7ea86f3e298b2c16515c76",
+    strip_prefix = "gha_create_release_test-999.0.0-1824847111-1",
     urls = [
-        "http://github.com/cgrindel/gha_create_release_test/archive/v999.0.0-1688769487-1.tar.gz",
+        "http://github.com/cgrindel/gha_create_release_test/archive/v999.0.0-1824847111-1.tar.gz",
     ],
 )
 
