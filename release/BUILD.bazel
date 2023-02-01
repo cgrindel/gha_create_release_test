@@ -1,11 +1,15 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load("@cgrindel_bazel_starlib//bzlformat:defs.bzl", "bzlformat_pkg")
 load(
     "@cgrindel_bazel_starlib//bzlrelease:defs.bzl",
     "create_release",
     "generate_release_notes",
     "generate_workspace_snippet",
+    "hash_sha256",
     "update_readme",
 )
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 
 package(default_visibility = ["//:__subpackages__"])
 
@@ -15,6 +19,7 @@ bzlformat_pkg(name = "bzlformat")
 
 generate_workspace_snippet(
     name = "generate_workspace_snippet",
+    sha256_file = ":archive_sha256",
     template = "workspace_snippet.tmpl",
 )
 
@@ -31,4 +36,30 @@ update_readme(
 create_release(
     name = "create",
     workflow_name = "Create Release",
+)
+
+# MARK: - Release Artifact
+
+write_file(
+    name = "src_file",
+    out = "src_file.txt",
+    content = ["Hello, World!"],
+)
+
+pkg_tar(
+    name = "archive",
+    srcs = [":src_file"],
+)
+
+hash_sha256(
+    name = "archive_sha256",
+    src = ":archive",
+)
+
+build_test(
+    name = "archive_build_test",
+    targets = [
+        ":archive",
+        ":archive_sha256",
+    ],
 )
