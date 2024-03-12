@@ -14,7 +14,7 @@ http_archive(
     name = "cgrindel_gha_create_release_test",
     sha256 = "e21ba92ff81e65b9a5739fa6b7abd9d22911c30ae38556b4a5c7151bbfdf3d02",
     urls = [
-        "https://github.com/cgrindel/gha_create_release_test/releases/download/v999.0.0-8248463688-1/repo_name.v999.0.0-8248463688-1.tar.gz",
+        "https://github.com/cgrindel/gha_create_release_test/releases/download/v999.0.0-8251142419-1/repo_name.v999.0.0-8251142419-1.tar.gz",
     ],
 )
 
